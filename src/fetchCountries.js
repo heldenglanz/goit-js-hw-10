@@ -1,18 +1,32 @@
 export  {fetchCountries} 
 
-const inputEl = document.querySelector('[id="search-box"]')
+// const inputEl = document.querySelector('[id="search-box"]')
 
-inputEl.addEventListener('input', fetchCountries);
+// inputEl.addEventListener('input', fetchCountries);
 
-function fetchCountries(name){
+// function fetchCountries(name){
 
-  return fetch(`https://restcountries.com/v3.1/name/${name}`)
+ fetch(`https://restcountries.com/v3.1/name/peru`)
     .then(response => {
         return response.json();
     })
-    .then(console.log)
-    }
+    .then(languages =>{
+      console.log(languages)
+    })
+    .catch (error =>{
+      console.log(error);
+    })
+    // }
 
-fetchCountries(peru)
+// fetchCountries(peru)
+// .then(renderCountryParams)
+// .catch(error => console.log(error))
 
 
+// function renderCountryParams(country){
+// const marcup = {
+    
+// }
+
+// }
+// inputEl.textContent
