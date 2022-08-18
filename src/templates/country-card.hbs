@@ -1,6 +1,6 @@
 <div class="card">
 <div class="card-img">
-    <img src="{{flags.svg}}" alt="{{name}}">
+    <img src="{{flags.svg}}" alt="{{name.official}}width='180'/>
 </div>
 <div>
     <h2 class="card-title">{{name}}</h2>
@@ -8,17 +8,13 @@
     <p class="card-population">Population: {{population}}</p>
     <ul class="card-languages"Languages:>
         {{#each Languages}}
+        {{#if @last}}
+        <li class='country-languages-item'>{{this}}</li>
+        {{else}}
         <li class="language-item">{{language}}</li>
+        {{/if}}
         {{/each}}
     </ul>
 </div>
-
-
-
-
-
-
-
-
 
 </div>
