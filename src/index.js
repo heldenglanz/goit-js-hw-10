@@ -1,6 +1,6 @@
 import './css/styles.css';
 import Notiflix from 'notiflix';
-import API from './fetchCountries'
+import {fetchCountries} from './fetchCountries'
 import countrycard from './templates/countrycard.hbs'
 const debounce = require('lodash.debounce');
 const DEBOUNCE_DELAY = 300;
@@ -13,19 +13,11 @@ const countryListEl = document.querySelector('.country-list')
 inputEl.addEventListener('input', debounce(onInputChange, DEBOUNCE_DELAY));
 
 function onInputChange(e){
+    countryDivEl.innerHTML = '';
+    countryListEl.innerHTML = '';
     const inputResult = e.target.value.trim();
-if(inputResult.length!==inputResult){
-    countryDivEl.innerHTML = '';
-    countryListEl.innerHTML = '';
-   
-}
 
-if(!inputResult){
-    countryDivEl.innerHTML = '';
-    countryListEl.innerHTML = '';
-    return
-}
-API.fetchCountries(inputResult)
+fetchCountries(inputResult)
 .then(response =>{
     if (response.length > 10){
         countryDivEl.innerHTML = '';
@@ -43,7 +35,6 @@ API.fetchCountries(inputResult)
 }
 function renderCountryInfo(search){
     const markup = countrycard(search)
-    countryListEl.innerHTML = '';
     countryDivEl.innerHTML = markup;
 }
 function renderCountryList(arr){
@@ -56,11 +47,9 @@ function renderCountryList(arr){
         );
     }, '');
     countryListEl.innerHTML = markup;
-    countryDivEl.innerHTML = '';
+    // countryDivEl.innerHTML = '';
     }
 function onError(error){
-    countryDivEl.innerHTML = '';
-    countryListEl.innerHTML = '';
     Notiflix.Notify.failure('Oops, there is no country with that name');
 }
 

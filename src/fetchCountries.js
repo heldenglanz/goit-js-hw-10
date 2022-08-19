@@ -3,7 +3,7 @@
 const BASE_URL = 'https://restcountries.com/v3.1';
 // const countryDivEl = document.querySelector('.country-info');
 
-function fetchCountries(name){
+export function fetchCountries(name){
   const search = new URLSearchParams({
       fields: 'name,capital,population,flags,languages',
   });
@@ -21,7 +21,7 @@ function fetchCountries(name){
 // Notiflix
 
 // }
-export default {fetchCountries} ;
+
 
 // const inputEl = document.querySelector('[id="search-box"]')
 
