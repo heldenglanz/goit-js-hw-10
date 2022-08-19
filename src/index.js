@@ -14,7 +14,11 @@ inputEl.addEventListener('input', debounce(onInputChange, DEBOUNCE_DELAY));
 
 function onInputChange(e){
     const inputResult = e.target.value.trim();
-
+if(inputResult.length!==inputResult){
+    countryDivEl.innerHTML = '';
+    countryListEl.innerHTML = '';
+   
+}
 
 if(!inputResult){
     countryDivEl.innerHTML = '';
@@ -28,11 +32,9 @@ API.fetchCountries(inputResult)
         Notiflix.Notify.info('Too many matches found. Please enter a more specific name');
     }
     else if (response.length === 1){
-        
         renderCountryInfo(response[0])
     }
     else if(response.length>1&&response.length<=10){
-       
         renderCountryList(response)
     }
 })
