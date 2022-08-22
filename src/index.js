@@ -47,7 +47,6 @@ function renderCountryList(arr){
         );
     }, '');
     countryListEl.innerHTML = markup;
-    // countryDivEl.innerHTML = '';
     }
 function onError(error){
     Notiflix.Notify.failure('Oops, there is no country with that name');
